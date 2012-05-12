@@ -29,8 +29,8 @@ class Crocodoc {
 		'url'   =>  $file_url
 		);
 		//this is a POST request
-    $output = $this->doCurlPost($url, $data);
-    return $output;
+		$output = $this->doCurlPost($url, $data);
+		return $output;
 	}
 	public function getStatus($uuids){
 		$url = $this->api_url.'document/status';
@@ -48,8 +48,8 @@ class Crocodoc {
 		'uuid'   =>  $uuid
 		);
 		//this is a POST request
-    $output = $this->doCurlPost($url, $data);
-    return $output;
+		$output = $this->doCurlPost($url, $data);
+		return $output;
 	}
 	
 	public function createSession($uuid) {
@@ -58,8 +58,8 @@ class Crocodoc {
 		'token' =>  $this->api_key,
 		'uuid'   =>  $uuid);
 		//this is a POST request
-    $output = $this->doCurlPost($url, $data);
-    return $output;
+		$output = $this->doCurlPost($url, $data);
+		return $output;
   }
 }
 ?>
