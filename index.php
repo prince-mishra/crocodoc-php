@@ -54,23 +54,22 @@ class Crocodoc {
 		curl_close($ch);
 		return $output;
 	}
-	
+  public function createSession($uuid) {
+	  $url = $this->api_url.'session/create';
+	  $data = array(
+	  'token' =>  $this->api_key,
+	  'uuid'   =>  $uuid
+	  );
+	  //this is a POST request
+	  $ch = curl_init();
+	  curl_setopt($ch, CURLOPT_URL, $url);
+	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	  curl_setopt($ch, CURLOPT_POST, true);
+	  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	  $output = curl_exec($ch);
+	  echo "\ndoCurl status, ",$output;
+	  curl_close($ch);
+	  return $output;
+  }
 }
-$croco = new Crocodoc();
-$uuid = $croco->upload('http://web.crocodoc.com/files/test-simple.pdf');
-echo "\n\nreturned uuid : ",var_dump($uuid);
-echo "\n----------------------------\n";
-$uuid = json_decode($uuid, true);
-echo "\n---extracting uid---\n";
-var_dump($uuid);
-$uuids = $uuid['uuid'];
-echo "\nchecking status of : ", $uuids;
-
-//$uuids = '['.$uuid.']';
-
-
-echo "\n----------------------------\n";
-echo $uuids;
-$status = $croco->getStatus($uuids);
-echo "\nstatus id : ", $status;
 ?>
