@@ -22,12 +22,15 @@ class Crocodoc {
 		curl_close($ch);
 		return $output;
 	}
-	public function upload($file_url) {
+	public function upload($file, $upload_from_url = true) {
 		$url = $this->api_url.'document/upload';
-		$data = array(
-		'token' =>  $this->api_key,
-		'url'   =>  $file_url
-		);
+		$data['token'] = $this->api_key;
+		
+		if ($upload_from_url)
+			$data['url'] = $file;
+		else
+			$data['file'] = "@".$file;
+		
 		//this is a POST request
 		$output = $this->doCurlPost($url, $data);
 		return $output;
