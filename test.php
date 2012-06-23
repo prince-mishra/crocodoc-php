@@ -9,8 +9,12 @@ $croco = new Crocodoc();
 /*
 
 # By providing a URL
+
 $uuid = $croco->upload('http://web.crocodoc.com/files/test-simple.pdf');
+
+
 # By providing a file on the server
+
 $uuid = $croco->upload('C:\samplefile.doc', false);
 echo "\n\nUploaded document. Returned uuid : ";
 var_dump($uuid);
